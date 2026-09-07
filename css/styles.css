@@ -1,0 +1,1034 @@
+﻿:root {
+    --navy: #09182b;
+    --navy-soft: #12253b;
+    --navy-light: #20354a;
+
+    --gold: #b8894f;
+    --gold-light: #d8b477;
+    --gold-pale: #ead3ad;
+
+    --ivory: #f7f1e7;
+    --cream: #fffaf1;
+    --beige: #eee3d3;
+
+    --wood: #5b3b25;
+    --wood-light: #8a6040;
+
+    --text: #27313a;
+    --muted: #706d67;
+    --white: #ffffff;
+
+    --border: rgba(9, 24, 43, .13);
+    --container: 1240px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--ivory);
+    color: var(--text);
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    line-height: 1.8;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(calc(100% - 64px), var(--container));
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 50;
+    color: var(--white);
+}
+
+.nav-container {
+    min-height: 92px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 30px;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.logo {
+    justify-self: center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 31px;
+    letter-spacing: 9px;
+    color: var(--gold-pale);
+    position: relative;
+}
+
+.logo::before,
+.logo::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 55px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.logo::before {
+    right: calc(100% + 22px);
+}
+
+.logo::after {
+    left: calc(100% + 22px);
+}
+
+.main-nav {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+
+    display: flex;
+    align-items: center;
+    gap: 31px;
+    direction: rtl;
+}
+
+.main-nav a {
+    position: relative;
+    color: rgba(255,255,255,.9);
+    font-size: 13px;
+    transition: .3s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    width: 0;
+    height: 1px;
+    background: var(--gold-light);
+    transition: width .3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--gold-pale);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    grid-column: 1;
+    grid-row: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+.language-btn,
+.menu-toggle {
+    background: transparent;
+    border: 0;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.language-btn {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.reservation-btn {
+    padding: 11px 24px;
+    border: 1px solid var(--gold-light);
+    color: var(--gold-pale);
+    font-size: 13px;
+    transition: .3s ease;
+}
+
+.reservation-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 790px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 82% 42%,
+            rgba(216,180,119,.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            105deg,
+            #eee3d3 0%,
+            #f8f1e5 54%,
+            #fffaf1 100%
+        );
+
+    color: var(--navy);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,137,79,.18);
+    right: -250px;
+    top: 90px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,137,79,.14);
+    right: -160px;
+    top: 180px;
+}
+
+.hero-overlay {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 690px;
+    margin-inline-start: auto;
+    padding-top: 90px;
+    text-align: right;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(55px, 7vw, 94px);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--navy);
+}
+
+.hero h1 span {
+    color: var(--wood);
+    font-style: italic;
+}
+
+.hero-text {
+    max-width: 570px;
+    margin: 28px 0 31px;
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.hero-actions .primary-btn {
+    box-shadow: 0 10px 25px rgba(9,24,43,.13);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-btn,
+.secondary-btn {
+    min-height: 51px;
+    padding: 0 29px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+}
+
+.primary-btn {
+    background: var(--navy);
+    color: var(--white);
+}
+
+.primary-btn:hover {
+    background: var(--gold);
+}
+
+.secondary-btn {
+    border: 1px solid var(--gold);
+    color: var(--navy);
+}
+
+.secondary-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro-section {
+    padding: 120px 0;
+    background: var(--cream);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+}
+
+.intro-section h2,
+.about-content h2,
+.section-heading h2,
+.reservation-content h2,
+.contact-section h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    color: var(--navy);
+    font-size: clamp(40px, 5vw, 63px);
+    line-height: 1.15;
+}
+
+.intro-grid p:not(.eyebrow) {
+    max-width: 570px;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 22px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--gold);
+    color: var(--navy);
+    transition: .3s ease;
+}
+
+.text-link:hover {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu-section {
+    padding: 115px 0;
+    background:
+        linear-gradient(
+            135deg,
+            #eee2d2,
+            #f8f0e3
+        );
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 52px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.menu-card {
+    background: var(--cream);
+    border: 1px solid rgba(9,24,43,.08);
+    overflow: hidden;
+    transition: .35s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(9,24,43,.12);
+}
+
+.menu-image {
+    height: 340px;
+    position: relative;
+    background:
+        linear-gradient(
+            135deg,
+            #8b6242,
+            #c6a47c 48%,
+            #59402c
+        );
+    overflow: hidden;
+}
+
+.menu-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,.22),
+            transparent 30%
+        );
+}
+
+.menu-image::after {
+    content: "AMICI";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 7px;
+    color: rgba(255,255,255,.8);
+
+    background: linear-gradient(
+        rgba(9,24,43,.05),
+        rgba(9,24,43,.25)
+    );
+}
+
+.menu-image-1 {
+    background:
+        radial-gradient(circle at center, #d9bd91, #7a5436);
+}
+
+.menu-image-2 {
+    background:
+        radial-gradient(circle at center, #c99c68, #603b25);
+}
+
+.menu-image-3 {
+    background:
+        radial-gradient(circle at center, #d9c0a0, #72543b);
+}
+
+.menu-card-content {
+    padding: 26px 28px 29px;
+    background: var(--navy);
+    color: var(--white);
+}
+
+.menu-category {
+    color: var(--gold-light);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.menu-card h3 {
+    margin: 8px 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+    font-weight: 400;
+    color: var(--white);
+}
+
+.menu-card p {
+    color: rgba(255,255,255,.66);
+    font-size: 13px;
+}
+
+.menu-card strong {
+    display: block;
+    margin-top: 13px;
+    color: var(--gold-light);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section {
+    padding: 125px 0;
+    background: var(--cream);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+}
+
+.about-image {
+    min-height: 630px;
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6f4b30,
+            #b58a61 48%,
+            #3d2b20
+        );
+}
+
+.about-image::before {
+    content: "";
+    position: absolute;
+    inset: 28px;
+    border: 1px solid rgba(234,211,173,.6);
+}
+
+.about-image::after {
+    content: "AMICI";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Georgia, serif;
+    font-size: 45px;
+    letter-spacing: 11px;
+    color: rgba(255,255,255,.72);
+}
+
+.about-content > p:not(.eyebrow) {
+    max-width: 560px;
+    color: var(--muted);
+    margin: 24px 0;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-section {
+    padding: 115px 0;
+    background: var(--ivory);
+}
+
+.centered {
+    display: block;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr .8fr;
+    grid-template-rows: 280px 280px;
+    gap: 12px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            #6d4a30,
+            #c09a70
+        );
+}
+
+.gallery-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9,24,43,.15),
+            transparent
+        );
+}
+
+.gallery-item::after {
+    content: "AMICI";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Georgia, serif;
+    font-size: 20px;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,.7);
+}
+
+.gallery-1 {
+    grid-row: span 2;
+    background:
+        linear-gradient(
+            135deg,
+            #533824,
+            #ad7e51,
+            #273849
+        );
+}
+
+.gallery-2 {
+    background:
+        linear-gradient(
+            135deg,
+            #a7784f,
+            #e0c09a
+        );
+}
+
+.gallery-3 {
+    background:
+        linear-gradient(
+            135deg,
+            #26394d,
+            #816045
+        );
+}
+
+.gallery-4 {
+    background:
+        linear-gradient(
+            135deg,
+            #d2b28b,
+            #715036
+        );
+}
+
+.gallery-5 {
+    background:
+        linear-gradient(
+            135deg,
+            #203348,
+            #9e7650
+        );
+}
+
+
+/* =========================================================
+   RESERVATION
+========================================================= */
+
+.reservation-section {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(216,180,119,.15),
+            transparent 35%
+        ),
+        var(--navy);
+
+    color: var(--white);
+}
+
+.reservation-section::before,
+.reservation-section::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(216,180,119,.16);
+    border-radius: 50%;
+}
+
+.reservation-section::before {
+    width: 550px;
+    height: 550px;
+    left: -250px;
+    top: 10px;
+}
+
+.reservation-section::after {
+    width: 370px;
+    height: 370px;
+    right: -160px;
+    bottom: -160px;
+}
+
+.reservation-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reservation-content h2 {
+    color: var(--white);
+    font-size: clamp(44px, 6vw, 73px);
+}
+
+.reservation-content > p:not(.eyebrow) {
+    max-width: 500px;
+    margin: 20px 0 30px;
+    color: rgba(255,255,255,.7);
+}
+
+.reservation-content .primary-btn {
+    background: var(--gold);
+}
+
+.reservation-content .primary-btn:hover {
+    background: var(--gold-light);
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section {
+    padding: 110px 0;
+    background: var(--cream);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.contact-details p {
+    padding: 19px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-details span {
+    display: inline-block;
+    min-width: 130px;
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+    padding: 62px 0 30px;
+    background: #061221;
+    color: var(--white);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+}
+
+.footer-logo {
+    font-family: Georgia, serif;
+    font-size: 29px;
+    letter-spacing: 8px;
+    color: var(--gold-light);
+}
+
+.footer-content p {
+    color: rgba(255,255,255,.52);
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 27px;
+}
+
+.footer-links a {
+    transition: .3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--gold-light);
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .nav-container {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .logo {
+        grid-column: 2;
+    }
+
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 92px;
+        left: 16px;
+        right: 16px;
+
+        padding: 25px;
+        background: var(--navy);
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+
+        box-shadow: 0 20px 45px rgba(0,0,0,.18);
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+
+    .main-nav a {
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .reservation-btn {
+        display: none;
+    }
+
+    .nav-actions {
+        grid-column: 3;
+    }
+
+    .intro-grid,
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 220px);
+    }
+
+    .gallery-1 {
+        grid-row: span 2;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .copyright {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 560px) {
+
+    .container {
+        width: min(calc(100% - 32px), var(--container));
+    }
+
+    .nav-container {
+        min-height: 80px;
+    }
+
+    .logo {
+        font-size: 25px;
+        letter-spacing: 6px;
+    }
+
+    .logo::before,
+    .logo::after {
+        display: none;
+    }
+
+    .main-nav {
+        top: 80px;
+    }
+
+    .hero {
+        min-height: 680px;
+    }
+
+    .hero-content {
+        padding-top: 70px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 250px);
+    }
+
+    .gallery-1 {
+        grid-row: auto;
+    }
+
+    .about-image {
+        min-height: 480px;
+    }
+}
+
+/* =========================================================
+   AMICI HERO IMAGE
+========================================================= */
+
+.hero {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(9, 24, 43, 0.12),
+            rgba(9, 24, 43, 0.04)
+        ),
+        url("../assets/images/hero/hero-amici.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero::before {
+    right: -180px;
+    top: 80px;
+    border-color: rgba(216, 180, 119, 0.25);
+}
+
+.hero::after {
+    right: -80px;
+    top: 150px;
+    border-color: rgba(216, 180, 119, 0.18);
+}
+
+.hero-content {
+    background: rgba(247, 241, 231, 0.78);
+    padding: 45px 50px;
+    backdrop-filter: blur(2px);
+    border-right: 3px solid var(--gold);
+    box-shadow: 0 20px 60px rgba(9, 24, 43, 0.10);
+}
+
+@media (max-width: 700px) {
+    .hero {
+        background-position: 58% center;
+    }
+
+    .hero-content {
+        padding: 30px 25px;
+        background: rgba(247, 241, 231, 0.88);
+    }
+}
+
+
+/* صورة بيتزا نابوليتانا */
+.menu-image-2 {
+    background-image: url("../assets/images/menu/pizza-amici.png.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.menu-image-3 img { width: 100%; height: 100%; object-fit: contain; display: block; background: #EEE3D3; }
+
+.menu-image-1 img { width: 100%; height: 100%; object-fit: contain; display: block; background: #EEE3D3; }
+
+.about-image { width: 100%; height: 100%; min-height: 420px; overflow: hidden; } .about-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.gallery-item { overflow: hidden; } .gallery-item img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* 1. جعل جميع صور المعرض تملأ المربعات بالكامل */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important; /* ملء المساحة بالكامل وقص الزوائد دون تشويه */
+    display: block;
+}
+
+/* 2. إخفاء طبقة النص الخلفية (AMICI) حتى لا تظهر أو تؤثر على الصور */
+.gallery-item::after {
+    display: none !important;
+}
