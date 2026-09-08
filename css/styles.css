@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --navy: #09182b;
     --navy-soft: #12253b;
     --navy-light: #20354a;
@@ -55,14 +55,24 @@ button {
 
 
 /* =========================================================
-   HEADER
+   HEADER OVERLAY (خلفية ممزوجة أسفل الهيدر)
 ========================================================= */
 
 .site-header {
     position: absolute;
-    inset: 0 0 auto;
-    z-index: 50;
-    color: var(--white);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: linear-gradient(
+        180deg, 
+        rgba(9, 24, 43, 0.95) 0%, 
+        rgba(9, 24, 43, 0.75) 60%, 
+        rgba(9, 24, 43, 0) 100%
+    );
+    backdrop-filter: blur(6px);
+    padding-bottom: 25px;
+    transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -71,7 +81,7 @@ button {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 30px;
-    border-bottom: 1px solid rgba(255,255,255,.18);
+    border-bottom: 1px solid rgba(216, 180, 119, 0.25);
 }
 
 .logo {
@@ -80,6 +90,7 @@ button {
     font-size: 31px;
     letter-spacing: 9px;
     color: var(--gold-pale);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
@@ -90,7 +101,8 @@ button {
     top: 50%;
     width: 55px;
     height: 1px;
-    background: var(--gold);
+    background: var(--gold-light);
+    opacity: 0.6;
 }
 
 .logo::before {
@@ -114,24 +126,27 @@ button {
 
 .main-nav a {
     position: relative;
-    color: rgba(255,255,255,.9);
-    font-size: 13px;
-    transition: .3s ease;
+    color: var(--ivory);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .main-nav a::after {
     content: "";
     position: absolute;
     right: 0;
-    bottom: -10px;
+    bottom: -6px;
     width: 0;
-    height: 1px;
-    background: var(--gold-light);
-    transition: width .3s ease;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
 }
 
 .main-nav a:hover {
-    color: var(--gold-pale);
+    color: var(--gold-light);
 }
 
 .main-nav a:hover::after {
@@ -152,26 +167,30 @@ button {
 .menu-toggle {
     background: transparent;
     border: 0;
-    color: var(--white);
+    color: var(--gold-pale);
     cursor: pointer;
 }
 
 .language-btn {
     font-size: 12px;
     letter-spacing: 2px;
+    font-weight: 600;
 }
 
 .reservation-btn {
-    padding: 11px 24px;
-    border: 1px solid var(--gold-light);
+    padding: 10px 22px;
+    border: 1px solid var(--gold);
+    background: rgba(9, 24, 43, 0.4);
     color: var(--gold-pale);
     font-size: 13px;
-    transition: .3s ease;
+    backdrop-filter: blur(2px);
+    transition: all 0.3s ease;
 }
 
 .reservation-btn:hover {
     background: var(--gold);
-    color: var(--white);
+    color: var(--navy);
+    box-shadow: 0 4px 15px rgba(184, 137, 79, 0.4);
 }
 
 .menu-toggle {
@@ -184,25 +203,25 @@ button {
 ========================================================= */
 
 .hero {
-    min-height: 790px;
+    min-height: 850px;
     position: relative;
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding-top: 120px;
 
-    background:
-        radial-gradient(
-            circle at 82% 42%,
-            rgba(216,180,119,.18),
-            transparent 30%
-        ),
+    background-image:
         linear-gradient(
-            105deg,
-            #eee3d3 0%,
-            #f8f1e5 54%,
-            #fffaf1 100%
-        );
+            180deg,
+            rgba(9, 24, 43, 0.3) 0%,
+            rgba(9, 24, 43, 0.1) 50%,
+            rgba(9, 24, 43, 0.5) 100%
+        ),
+        url("../assets/images/hero/hero-amici.png");
 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--navy);
 }
 
@@ -212,9 +231,9 @@ button {
     width: 620px;
     height: 620px;
     border-radius: 50%;
-    border: 1px solid rgba(184,137,79,.18);
-    right: -250px;
-    top: 90px;
+    border: 1px solid rgba(216, 180, 119, 0.25);
+    right: -180px;
+    top: 80px;
 }
 
 .hero::after {
@@ -223,9 +242,9 @@ button {
     width: 440px;
     height: 440px;
     border-radius: 50%;
-    border: 1px solid rgba(184,137,79,.14);
-    right: -160px;
-    top: 180px;
+    border: 1px solid rgba(216, 180, 119, 0.18);
+    right: -80px;
+    top: 150px;
 }
 
 .hero-overlay {
@@ -238,8 +257,13 @@ button {
     width: 100%;
     max-width: 690px;
     margin-inline-start: auto;
-    padding-top: 90px;
+    padding: 45px 50px;
+    margin-top: 40px;
     text-align: right;
+    background: rgba(247, 241, 231, 0.82);
+    backdrop-filter: blur(4px);
+    border-right: 3px solid var(--gold);
+    box-shadow: 0 20px 60px rgba(9, 24, 43, 0.15);
 }
 
 .eyebrow {
@@ -406,60 +430,16 @@ button {
 .menu-image {
     height: 340px;
     position: relative;
-    background:
-        linear-gradient(
-            135deg,
-            #8b6242,
-            #c6a47c 48%,
-            #59402c
-        );
+    background: var(--navy);
     overflow: hidden;
 }
 
-.menu-image::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(255,255,255,.22),
-            transparent 30%
-        );
-}
-
-.menu-image::after {
-    content: "AMICI";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: Georgia, serif;
-    font-size: 25px;
-    letter-spacing: 7px;
-    color: rgba(255,255,255,.8);
-
-    background: linear-gradient(
-        rgba(9,24,43,.05),
-        rgba(9,24,43,.25)
-    );
-}
-
-.menu-image-1 {
-    background:
-        radial-gradient(circle at center, #d9bd91, #7a5436);
-}
-
-.menu-image-2 {
-    background:
-        radial-gradient(circle at center, #c99c68, #603b25);
-}
-
-.menu-image-3 {
-    background:
-        radial-gradient(circle at center, #d9c0a0, #72543b);
+.menu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .menu-card-content {
@@ -512,37 +492,18 @@ button {
 }
 
 .about-image {
-    min-height: 630px;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
     position: relative;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6f4b30,
-            #b58a61 48%,
-            #3d2b20
-        );
+    overflow: hidden;
 }
 
-.about-image::before {
-    content: "";
-    position: absolute;
-    inset: 28px;
-    border: 1px solid rgba(234,211,173,.6);
-}
-
-.about-image::after {
-    content: "AMICI";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: Georgia, serif;
-    font-size: 45px;
-    letter-spacing: 11px;
-    color: rgba(255,255,255,.72);
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .about-content > p:not(.eyebrow) {
@@ -577,85 +538,17 @@ button {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    background:
-        linear-gradient(
-            135deg,
-            #6d4a30,
-            #c09a70
-        );
 }
 
-.gallery-item::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(9,24,43,.15),
-            transparent
-        );
-}
-
-.gallery-item::after {
-    content: "AMICI";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-family: Georgia, serif;
-    font-size: 20px;
-    letter-spacing: 6px;
-    color: rgba(255,255,255,.7);
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    display: block;
 }
 
 .gallery-1 {
     grid-row: span 2;
-    background:
-        linear-gradient(
-            135deg,
-            #533824,
-            #ad7e51,
-            #273849
-        );
-}
-
-.gallery-2 {
-    background:
-        linear-gradient(
-            135deg,
-            #a7784f,
-            #e0c09a
-        );
-}
-
-.gallery-3 {
-    background:
-        linear-gradient(
-            135deg,
-            #26394d,
-            #816045
-        );
-}
-
-.gallery-4 {
-    background:
-        linear-gradient(
-            135deg,
-            #d2b28b,
-            #715036
-        );
-}
-
-.gallery-5 {
-    background:
-        linear-gradient(
-            135deg,
-            #203348,
-            #9e7650
-        );
 }
 
 
@@ -811,7 +704,7 @@ button {
 
 
 /* =========================================================
-   MOBILE
+   MOBILE RESPONSIVENESS
 ========================================================= */
 
 @media (max-width: 950px) {
@@ -894,6 +787,17 @@ button {
     }
 }
 
+@media (max-width: 700px) {
+    .hero {
+        background-position: 58% center;
+    }
+
+    .hero-content {
+        padding: 30px 25px;
+        background: rgba(247, 241, 231, 0.88);
+        margin-top: 20px;
+    }
+}
 
 @media (max-width: 560px) {
 
@@ -924,7 +828,7 @@ button {
     }
 
     .hero-content {
-        padding-top: 70px;
+        padding-top: 30px;
     }
 
     .hero h1 {
@@ -952,83 +856,4 @@ button {
     .about-image {
         min-height: 480px;
     }
-}
-
-/* =========================================================
-   AMICI HERO IMAGE
-========================================================= */
-
-.hero {
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(9, 24, 43, 0.12),
-            rgba(9, 24, 43, 0.04)
-        ),
-        url("../assets/images/hero/hero-amici.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.hero::before {
-    right: -180px;
-    top: 80px;
-    border-color: rgba(216, 180, 119, 0.25);
-}
-
-.hero::after {
-    right: -80px;
-    top: 150px;
-    border-color: rgba(216, 180, 119, 0.18);
-}
-
-.hero-content {
-    background: rgba(247, 241, 231, 0.78);
-    padding: 45px 50px;
-    backdrop-filter: blur(2px);
-    border-right: 3px solid var(--gold);
-    box-shadow: 0 20px 60px rgba(9, 24, 43, 0.10);
-}
-
-@media (max-width: 700px) {
-    .hero {
-        background-position: 58% center;
-    }
-
-    .hero-content {
-        padding: 30px 25px;
-        background: rgba(247, 241, 231, 0.88);
-    }
-}
-
-
-/* صورة بيتزا نابوليتانا */
-.menu-image-2 {
-    background-image: url("../assets/images/menu/pizza-amici.png.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
-.menu-image-3 img { width: 100%; height: 100%; object-fit: contain; display: block; background: #EEE3D3; }
-
-.menu-image-1 img { width: 100%; height: 100%; object-fit: contain; display: block; background: #EEE3D3; }
-
-.about-image { width: 100%; height: 100%; min-height: 420px; overflow: hidden; } .about-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.gallery-item { overflow: hidden; } .gallery-item img { width: 100%; height: 100%; object-fit: contain; display: block; }
-/* 1. جعل جميع صور المعرض تملأ المربعات بالكامل */
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover !important; /* ملء المساحة بالكامل وقص الزوائد دون تشويه */
-    display: block;
-}
-
-/* 2. إخفاء طبقة النص الخلفية (AMICI) حتى لا تظهر أو تؤثر على الصور */
-.gallery-item::after {
-    display: none !important;
 }
